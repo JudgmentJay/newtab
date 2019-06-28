@@ -1,0 +1,324 @@
+@import url('https://fonts.googleapis.com/css?family=Signika&display=swap');
+
+@import './reset.scss';
+
+$white: white;
+$black: black;
+$red: #800000;
+$textShadow: 4px 4px 0 rgba(0, 0, 0, 1);
+
+body {
+	overflow: hidden;
+
+	font-family: 'Signika', sans-serif;
+
+	background: url(../img/background.webp) #{$black} center top fixed no-repeat;
+	background-size: cover;
+}
+
+h1 {
+	padding: 10px 10px 6px;
+
+	font-size: 1.6em;
+	font-weight: 600;
+	text-transform: uppercase;
+
+	cursor: default;
+}
+
+#boxes {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: flex-start;
+	padding-top: 10px;
+
+	color: $black;
+}
+
+.box {
+	width: calc((100vw / 8) - 10px);
+	height: 75vh;
+
+	&__content {
+		position: relative;
+		z-index: 1;
+
+		background: rgba(255, 255, 255, 0.5);
+		backdrop-filter: blur(5px);
+		box-shadow: 0 0 35px rgba(0, 0, 0, 0.25);
+	}
+
+	&__links {
+		height: 0;
+		margin: 0;
+		overflow: hidden;
+
+		font-size: 1.4em;
+
+		list-style: none;
+	}
+
+	&:hover &__links {
+		height: auto;
+	}
+
+	&.editMode &__links {
+		height: auto;
+	}
+
+	&__link {
+		display: block;
+		padding: 7px 10px;
+
+		&:hover {
+			background: rgba(255, 255, 255, 0.25);
+		}
+
+		&--addNew {
+			display: none;
+
+			color: $red;
+
+			cursor: pointer;
+		}
+	}
+
+	&.editMode &__link--addNew {
+		display: block;
+	}
+}
+
+#cornerBox {
+	position: absolute;
+	bottom: 10px;
+	left: 10px;
+
+	font-size: 4em;
+	color: $white;
+	text-shadow: $textShadow;
+}
+
+.weather {
+	position: relative;
+
+	display: flex;
+	align-items: flex-end;
+	margin-bottom: 24px;
+	padding-bottom: 25px;
+
+	border-bottom: 1px solid #{$white};
+
+	&__icon {
+		max-height: 40px;
+		margin-right: 15px;
+	}
+
+	&__temp {
+		height: 36px;
+
+		cursor: default;
+	}
+}
+
+.date {
+	cursor: default;
+}
+
+#editModeToggle {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 50px;
+	height: 50px;
+	opacity: 0;
+
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 4em;
+
+	background: rgba(255, 255, 255, 0.75);
+
+	transition: opacity 100ms linear;
+
+	&.editMode, &:hover {
+		opacity: 1;
+	}
+
+	span {
+		transition: transform 100ms linear;
+	}
+
+	&.editMode span {
+		transform: rotate(-45deg);
+	}
+}
+
+#modalBackground {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1;
+
+	background: rgba(0, 0, 0, 0.85);
+}
+
+.editBookmark {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+	width: 750px;
+	padding: 20px;
+
+	color: $black;
+
+	background: rgba(255, 255, 255, 0.65);
+	box-shadow: 0 0 35px rgba(0, 0, 0, 0.75);
+
+	&__field {
+		margin: 0 0 1em 0;
+
+		input {
+			width: 100%;
+			padding: 7px;
+
+			font-size: 1.8em;
+
+			background: $white;
+			border: 1px solid #ddd;
+		}
+	}
+
+	&__buttons {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		font-size: 2em;
+	}
+
+	&__button {
+		margin: 1em 5px 0;
+		padding: 8px 25px;
+
+		font-weight: 600;
+
+		background: $white;
+		border: 1px solid #ddd;
+
+		&--delete {
+			color: $white;
+
+			background: $red;
+			border: 1px solid $red;
+		}
+	}
+}
+
+h2 {
+	margin: 0 0 1em 0;
+
+	font-size: 2.4em;
+	font-weight: 600;
+	text-align: center;
+}
+
+@media (min-width: 1630px) {
+	h1 {
+		padding: 15px 15px 11px;
+
+		font-size: 2em;
+	}
+
+	.box {
+		&__links {
+			font-size: 1.6em;
+		}
+
+		&__link {
+			padding: 10px 15px;
+		}
+	}
+}
+
+@media (min-width: 1870px) {
+	#boxes {
+		padding-top: 20px;
+	}
+
+	.box {
+		width: calc((100vw / 8) - 20px);
+	}
+
+	#cornerBox {
+		bottom: 20px;
+		left: 20px;
+	}
+}
+
+@media (min-width: 2510px) {
+	.box {
+		&__links {
+			font-size: 2em;
+		}
+	}
+
+	#cornerBox {
+		font-size: 6em;
+	}
+
+	.weather {
+		&__icon {
+			max-height: 55px;
+		}
+
+		&__temp {
+			height: 52px;
+		}
+	}
+}
+
+@media (min-width: 3790px) {
+	h1 {
+		padding: 20px 20px 13px;
+
+		font-size: 3em;
+	}
+
+	#boxes {
+		padding-top: 30px;
+	}
+
+	.box {
+		width: calc((100vw / 8) - 30px);
+
+		&__links {
+			font-size: 3em;
+		}
+
+		&__link {
+			padding: 15px 20px;
+		}
+	}
+
+	#cornerBox {
+		font-size: 8em;
+	}
+
+	.weather {
+		&__icon {
+			height: 75px;
+			max-height: none;
+		}
+
+		&__temp {
+			height: 67px;
+		}
+	}
+}
