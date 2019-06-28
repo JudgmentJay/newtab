@@ -1,15 +1,34 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
+import ClassNames from 'classnames'
 
-import './css/reset.css'
 import './css/main.scss'
 
-const App = () => {
+require.context('./img', true, /\.(jpe?g|png|gif|svg|webp)$/)
+
+import { ModalProvider } from './context/modal'
+
+import Boxes from './components/Boxes'
+import DateTime from './components/DateTime'
+import Weather from './components/Weather'
+
+const NewTab = () => {
+	const [editMode, setEditMode] = useState(false)
+
+	const editModeClass = ClassNames({
+		'editMode': editMode
+	})
+
 	return (
-		<div>
-			Hello World!
-		</div>
+		<ModalProvider>
+			<Boxes editMode={editMode} />
+			<div id="cornerBox">
+				<Weather />
+				<DateTime />
+			</div>
+			<button id="editModeToggle" className={editModeClass} onClick={(() => setEditMode(!editMode))}><span>+</span></button>
+		</ModalProvider>
 	)
 }
 
-ReactDOM.render(<App />, document.getElementById('app'))
+ReactDOM.render(<NewTab />, document.getElementById('newtab'))

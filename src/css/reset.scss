@@ -2,6 +2,7 @@
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
+	vertical-align: baseline;
 }
 
 html {
@@ -16,27 +17,9 @@ body {
 }
 
 h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h2 {
 	font-size: inherit;
 	font-weight: 400;
-}
-
-article,
-aside,
-footer,
-header,
-nav,
-section {
-	display: block;
-}
-
-ul,
-ol {
-	margin: 0 0 0 18px;
 }
 
 img {
@@ -61,6 +44,7 @@ button {
 	font: inherit;
 	-webkit-font-smoothing: inherit;
 	letter-spacing: inherit;
+	outline: 0;
 	overflow: visible;
 }
 
