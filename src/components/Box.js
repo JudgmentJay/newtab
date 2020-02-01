@@ -23,9 +23,7 @@ const Box = ({
 		}
 	}
 
-	const editModeClass = ClassNames({
-		'editMode': editMode
-	})
+	const editModeClass = ClassNames({ 'editMode': editMode })
 
 	return (
 		<div className={`box ${editModeClass}`}>

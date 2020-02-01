@@ -9,22 +9,20 @@ require.context('./img', true, /\.(jpe?g|png|gif|svg|webp)$/)
 import { ModalProvider } from './context/modal'
 
 import Boxes from './components/Boxes'
-import DateTime from './components/DateTime'
+import Today from './components/Today'
 import Weather from './components/Weather'
 
 const NewTab = () => {
 	const [editMode, setEditMode] = useState(false)
 
-	const editModeClass = ClassNames({
-		'editMode': editMode
-	})
+	const editModeClass = ClassNames({ 'editMode': editMode })
 
 	return (
 		<ModalProvider>
 			<Boxes editMode={editMode} />
 			<div id="cornerBox">
 				<Weather />
-				<DateTime />
+				<Today />
 			</div>
 			<button id="editModeToggle" className={editModeClass} onClick={(() => setEditMode(!editMode))}><span>+</span></button>
 		</ModalProvider>

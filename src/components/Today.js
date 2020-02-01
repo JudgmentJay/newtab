@@ -1,6 +1,6 @@
 import React from 'react'
 
-const DateTime = () => {
+const Today = () => {
 	const getDate = () => {
 		const now = new Date()
 
@@ -39,4 +39,4 @@ const DateTime = () => {
 	return <div className="date">{getDate()}</div>
 }
 
-export default DateTime
+export default Today

@@ -3,13 +3,19 @@ const latitude = '30.2973'
 const longitude = '-97.8105'
 const exclusions = 'minutely,hourly,alerts,flags'
 
-const proxy = 'https://cors-anywhere.herokuapp.com/'
+const proxy = 'http://localhost:3010/proxy/'
 
 const DarkSky = {
 	getWeather() {
 		return fetch(`${proxy}https://api.darksky.net/forecast/${apiKey}/${latitude},${longitude}?exclude=${exclusions}`)
-			.then(response => response.json())
-			.then(jsonResponse => ({
+			.then((response) => {
+				if (response.status === 200) {
+					return response.json()
+				} else {
+					console.log('Unable to retrieve current weather')
+				}
+			})
+			.then((jsonResponse) => ({
 				temperature: jsonResponse.currently.temperature,
 				icon: jsonResponse.currently.icon,
 				high: jsonResponse.daily.data[0].temperatureHigh,
