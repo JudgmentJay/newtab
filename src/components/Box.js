@@ -32,7 +32,13 @@ const Box = ({
 				<ul className="box__links">
 					{
 						bookmarks.map((bookmark, i) => {
-							return <li key={`${category}Link${i}`}><a className="box__link" href={bookmark.url} rel="noreferrer noopener" onClick={(e) => handleClick(e, bookmark)}>{bookmark.site}</a></li>
+							return (
+								<li key={`${category}Link${i}`}>
+									<a className="box__link" href={bookmark.url} rel="noreferrer noopener" target="_top" onClick={(e) => handleClick(e, bookmark)}>
+										{bookmark.site}
+									</a>
+								</li>
+							)
 						})
 					}
 					<li><a className="box__link box__link--addNew" onClick={() => modalContext.dispatch({ type: 'TOGGLE_ADD_MODAL', category: category })}>+ Add New</a></li>
