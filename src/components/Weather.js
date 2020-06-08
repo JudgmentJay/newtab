@@ -6,7 +6,36 @@ const Weather = () => {
 	const [weather, setWeather] = useState({})
 
 	useEffect(() => {
-		DarkSky.getWeather().then(result => setWeather({...result, loaded: true}))
+		DarkSky.getWeather().then((result) => {
+			const now = new Date()
+
+			const twoHours = 60 * 60 * 2 * 1000
+			const halfHour = 60 * 30 * 1000
+
+			const sunrise = result.sunrise * 1000
+			const sunriseStart = sunrise - halfHour
+			const sunriseEnd = sunrise + twoHours
+
+			const sunset = result.sunset * 1000
+			const sunsetStart = sunset - twoHours
+			const sunsetEnd = sunset + halfHour
+
+			let bodyClass
+
+			if ((now >= sunriseStart && now < sunriseEnd) || (now >= sunsetStart && now < sunsetEnd)) {
+				bodyClass = 'golden'
+			} else if (now >= sunriseEnd && now < sunsetStart) {
+				bodyClass = 'day'
+			} else {
+				bodyClass = 'night'
+			}
+
+			const body = document.getElementsByTagName('body')[0]
+
+			body.classList.add(bodyClass)
+
+			setWeather({...result, loaded: true})
+		})
 	}, [])
 
 	return (

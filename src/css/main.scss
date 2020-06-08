@@ -2,8 +2,6 @@
 
 @import './reset.scss';
 
-$white: white;
-$black: black;
 $red: #800000;
 $textShadow: 4px 4px 0 rgba(0, 0, 0, 1);
 
@@ -12,8 +10,22 @@ body {
 
 	font-family: 'Signika', sans-serif;
 
-	background: url(../img/background.webp) #{$black} center top fixed no-repeat;
-	background-size: cover;
+	background-color: black;
+
+	&.golden {
+		background: url(../img/room-golden.jpg) black center top fixed no-repeat;
+		background-size: cover;
+	}
+
+	&.day {
+		background: url(../img/room-day.jpg) black center top fixed no-repeat;
+		background-size: cover;
+	}
+
+	&.night {
+		background: url(../img/room-night.jpg) black center top fixed no-repeat;
+		background-size: cover;
+	}
 }
 
 h1 {
@@ -32,7 +44,7 @@ h1 {
 	align-items: flex-start;
 	padding-top: 10px;
 
-	color: $black;
+	color: black;
 }
 
 .box {
@@ -94,7 +106,7 @@ h1 {
 	left: 10px;
 
 	font-size: 4em;
-	color: $white;
+	color: white;
 	text-shadow: $textShadow;
 }
 
@@ -106,7 +118,7 @@ h1 {
 	margin-bottom: 24px;
 	padding-bottom: 25px;
 
-	border-bottom: 1px solid #{$white};
+	border-bottom: 1px solid white;
 
 	&__icon {
 		max-height: 40px;
@@ -176,7 +188,7 @@ h1 {
 	width: 750px;
 	padding: 20px;
 
-	color: $black;
+	color: black;
 
 	background: rgba(255, 255, 255, 0.65);
 	box-shadow: 0 0 35px rgba(0, 0, 0, 0.75);
@@ -190,7 +202,7 @@ h1 {
 
 			font-size: 1.8em;
 
-			background: $white;
+			background: white;
 			border: 1px solid #ddd;
 		}
 	}
@@ -209,11 +221,11 @@ h1 {
 
 		font-weight: 600;
 
-		background: $white;
+		background: white;
 		border: 1px solid #ddd;
 
 		&--delete {
-			color: $white;
+			color: white;
 
 			background: $red;
 			border: 1px solid $red;

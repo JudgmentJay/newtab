@@ -18,8 +18,8 @@ const DarkSky = {
 			.then((jsonResponse) => ({
 				temperature: jsonResponse.currently.temperature,
 				icon: jsonResponse.currently.icon,
-				high: jsonResponse.daily.data[0].temperatureHigh,
-				low: jsonResponse.daily.data[0].temperatureLow
+				sunrise: jsonResponse.daily.data[0].sunriseTime,
+				sunset: jsonResponse.daily.data[0].sunsetTime
 			}))
 	}
 }
