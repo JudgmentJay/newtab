@@ -54,7 +54,7 @@ const EditBookmarks = ({ getBookmarks }) => {
 				category
 			}
 
-			fetchData('bookmarks/write', 'POST', data, callback)
+			fetchData('/bookmarks/write', 'POST', data, callback)
 		}
 	}
 
@@ -66,14 +66,14 @@ const EditBookmarks = ({ getBookmarks }) => {
 				url
 			}
 
-			fetchData(`bookmarks/edit/${bookmark.rowid}`, 'PUT', data, callback)
+			fetchData(`/bookmarks/edit/${bookmark.rowid}`, 'PUT', data, callback)
 		}
 	}
 
 	const deleteBookmark = () => {
 		const data = { password }
 
-		fetchData(`bookmarks/delete/${bookmark.rowid}`, 'DELETE', data, callback)
+		fetchData(`/bookmarks/delete/${bookmark.rowid}`, 'DELETE', data, callback)
 	}
 
 	return (

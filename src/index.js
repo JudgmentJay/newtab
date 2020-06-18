@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
-import ClassNames from 'classnames'
+import classNames from 'classnames'
 
 import './css/main.scss'
 
@@ -15,7 +15,11 @@ import Weather from './components/Weather'
 const NewTab = () => {
 	const [editMode, setEditMode] = useState(false)
 
-	const editModeClass = ClassNames({ 'editMode': editMode })
+	const buttonClasses = classNames(
+		{
+			'editMode': editMode
+		}
+	)
 
 	return (
 		<ModalProvider>
@@ -24,7 +28,7 @@ const NewTab = () => {
 				<Weather />
 				<Today />
 			</div>
-			<button id="editModeToggle" className={editModeClass} onClick={(() => setEditMode(!editMode))}><span>+</span></button>
+			<button id="editModeToggle" className={buttonClasses} onClick={(() => setEditMode(!editMode))}><span>+</span></button>
 		</ModalProvider>
 	)
 }

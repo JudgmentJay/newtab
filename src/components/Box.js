@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
-import ClassNames from 'classnames'
+import classNames from 'classnames'
 
 import { ModalContext } from '../context/modal'
 
@@ -23,10 +23,14 @@ const Box = ({
 		}
 	}
 
-	const editModeClass = ClassNames({ 'editMode': editMode })
+	const boxClasses = classNames('box',
+		{
+			'editMode': editMode
+		}
+	)
 
 	return (
-		<div className={`box ${editModeClass}`}>
+		<div className={boxClasses}>
 			<div className="box__content">
 				<h1>{category}</h1>
 				<ul className="box__links">
@@ -34,7 +38,7 @@ const Box = ({
 						bookmarks.map((bookmark, i) => {
 							return (
 								<li key={`${category}Link${i}`}>
-									<a className="box__link" href={bookmark.url} rel="noreferrer noopener" target="_top" onClick={(e) => handleClick(e, bookmark)}>
+									<a className="box__link" href={bookmark.url} rel="noreferrer noopener" onClick={(e) => handleClick(e, bookmark)}>
 										{bookmark.site}
 									</a>
 								</li>

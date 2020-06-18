@@ -3,11 +3,15 @@ const latitude = '30.2973'
 const longitude = '-97.8105'
 const exclusions = 'minutely,hourly,alerts,flags'
 
-const proxy = 'http://localhost:3010/proxy/'
+const proxy = '/proxy/'
 
 const DarkSky = {
 	getWeather() {
-		return fetch(`${proxy}https://api.darksky.net/forecast/${apiKey}/${latitude},${longitude}?exclude=${exclusions}`)
+		return fetch(`${proxy}https://api.darksky.net/forecast/${apiKey}/${latitude},${longitude}?exclude=${exclusions}`, {
+			headers: {
+				'x-requested-with': 'XMLHttpRequest'
+			}
+		})
 			.then((response) => {
 				if (response.status === 200) {
 					return response.json()
