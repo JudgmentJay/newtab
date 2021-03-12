@@ -1,4 +1,4 @@
-const apiKey = '4430634ba83a2a17a47d265d2c1ded3b'
+const apiKey = ''
 const latitude = '30.2973'
 const longitude = '-97.8105'
 const exclusions = 'minutely,hourly,alerts,flags'
