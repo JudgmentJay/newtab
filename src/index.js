@@ -4,6 +4,8 @@ import classNames from 'classnames'
 
 import './css/main.scss'
 
+require.context('./img', true, /\.(jpe?g|png|gif|svg|webp)$/)
+
 import { ModalProvider } from './context/modal'
 
 import Boxes from './components/Boxes'
