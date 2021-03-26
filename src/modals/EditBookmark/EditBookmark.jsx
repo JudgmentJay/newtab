@@ -1,11 +1,13 @@
 import React, { useContext, useState, useRef, useEffect } from 'react'
 import PropTypes from 'prop-types'
 
-import { fetchData } from '../services/fetch'
+import { fetchData } from '../../services/fetch'
 
-import { ModalContext } from '../context/modal'
+import { ModalContext } from '../../context/modal'
 
-const EditBookmarks = ({ getBookmarks }) => {
+import styles from './styles.module.scss'
+
+const EditBookmark = ({ getBookmarks }) => {
 	const modalContext = useContext(ModalContext)
 
 	const {
@@ -77,34 +79,34 @@ const EditBookmarks = ({ getBookmarks }) => {
 	}
 
 	return (
-		<div id="modalBackground">
-			<div className="editBookmark">
+		<div className={styles.modalBackground}>
+			<div className={styles.editBookmark}>
 				<h2>{ modalType === 'add' ? 'Add' : 'Edit' } Bookmark</h2>
-				<div className="editBookmark__field">
+				<div className={styles.field}>
 					<input type="password" value={password} placeholder="Password" onChange={(e) => setPassword(e.target.value)}></input>
 				</div>
-				<div className="editBookmark__field">
+				<div className={styles.field}>
 					<input type="text" value={site} placeholder="Site Name" onChange={(e) => setSite(e.target.value)} ref={siteFieldRef} />
 				</div>
-				<div className="editBookmark__field">
+				<div className={styles.field}>
 					<input type="text" value={url} placeholder="Site URL" onChange={(e) => setUrl(e.target.value)} />
 				</div>
-				<div className="editBookmark__buttons">
-					<button className="editBookmark__button" onClick={modalType === 'add' ? () => addBookmark() : () => updateBookmark()}>
+				<div className={styles.buttons}>
+					<button className={styles.button} onClick={modalType === 'add' ? () => addBookmark() : () => updateBookmark()}>
 						{ modalType === 'add' ? 'Add' : 'Update' }
 					</button>
 					{ modalType === 'edit' &&
-						<button className="editBookmark__button editBookmark__button--delete" onClick={() => deleteBookmark()}>Delete</button>
+						<button className={`${styles.button} ${styles['button--delete']}`} onClick={() => deleteBookmark()}>Delete</button>
 					}
-					<button className="editBookmark__button" onClick={() => modalContext.dispatch({ type: 'CLOSE_MODAL' })}>Cancel</button>
+					<button className={styles.button} onClick={() => modalContext.dispatch({ type: 'CLOSE_MODAL' })}>Cancel</button>
 				</div>
 			</div>
 		</div>
 	)
 }
 
-EditBookmarks.propTypes = {
+EditBookmark.propTypes = {
 	getBookmarks: PropTypes.func.isRequired
 }
 
-export default EditBookmarks
+export default EditBookmark

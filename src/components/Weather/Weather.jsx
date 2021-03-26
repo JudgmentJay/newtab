@@ -1,22 +1,26 @@
 import React, { useState, useEffect } from 'react'
 
-import DarkSky from '../util/DarkSky'
+import { getWeather } from '../../services/darkSky'
+
+import styles from './styles.module.scss'
+
+require.context('../../img', true, /\.(jpe?g|png|gif|svg|webp)$/)
 
 const Weather = () => {
-	const [weather, setWeather] = useState({})
+	const [weather, setWeather] = useState(null)
 
 	useEffect(() => {
-		DarkSky.getWeather().then((result) => {
+		getWeather().then((weather) => {
 			const now = new Date()
 
 			const twoHours = 60 * 60 * 2 * 1000
 			const halfHour = 60 * 30 * 1000
 
-			const sunrise = result.sunrise * 1000
+			const sunrise = weather.sunrise * 1000
 			const sunriseStart = sunrise - halfHour
 			const sunriseEnd = sunrise + twoHours
 
-			const sunset = result.sunset * 1000
+			const sunset = weather.sunset * 1000
 			const sunsetStart = sunset - twoHours
 			const sunsetEnd = sunset + halfHour
 
@@ -34,22 +38,20 @@ const Weather = () => {
 
 			body.classList.add(bodyClass)
 
-			setWeather({...result, loaded: true})
+			setWeather(weather)
 		})
 	}, [])
 
-	return (
-		<React.Fragment>
-			{ weather.loaded &&
-				<div className="weather">
-					<a href="https://darksky.net/forecast/30.2973,-97.8105/us12/en" rel="noreferrer noopener">
-						<img className="weather__icon" src={`img/${weather.icon}.webp`} alt="Current weather" />
-					</a>
-					<div className="weather__temp">{Math.round(weather.temperature)}&deg;</div>
-				</div>
-			}
-		</React.Fragment>
-	)
+	return weather
+		? (
+			<div className={styles.weather}>
+				<a href="https://darksky.net/forecast/30.2973,-97.8105/us12/en" rel="noreferrer noopener">
+					<img className={styles.icon} src={`img/${weather.icon}.webp`} alt="Current weather" />
+				</a>
+				<div className={styles.temp}>{Math.round(weather.temperature)}&deg;</div>
+			</div>
+		)
+		: null
 }
 
 export default Weather

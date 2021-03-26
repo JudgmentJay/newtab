@@ -2,7 +2,9 @@ import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import { ModalContext } from '../context/modal'
+import { ModalContext } from '../../context/modal'
+
+import styles from './style.module.scss'
 
 const Box = ({
 	category,
@@ -23,29 +25,27 @@ const Box = ({
 		}
 	}
 
-	const boxClasses = classNames('box',
-		{
-			'editMode': editMode
-		}
-	)
+	const boxClasses = classNames(styles.box, {
+		[`${styles['box--editMode']}`]: editMode
+	})
 
 	return (
 		<div className={boxClasses}>
-			<div className="box__content">
+			<div className={styles.content}>
 				<h1>{category}</h1>
-				<ul className="box__links">
+				<ul className={styles.links}>
 					{
 						bookmarks.map((bookmark, i) => {
 							return (
 								<li key={`${category}Link${i}`}>
-									<a className="box__link" href={bookmark.url} rel="noreferrer noopener" onClick={(e) => handleClick(e, bookmark)}>
+									<a className={styles.link} href={bookmark.url} rel="noreferrer noopener" onClick={(e) => handleClick(e, bookmark)}>
 										{bookmark.site}
 									</a>
 								</li>
 							)
 						})
 					}
-					<li><a className="box__link box__link--addNew" onClick={() => modalContext.dispatch({ type: 'TOGGLE_ADD_MODAL', category: category })}>+ Add New</a></li>
+					<li><a className={`${styles.link} ${styles.addNew}`} onClick={() => modalContext.dispatch({ type: 'TOGGLE_ADD_MODAL', category: category })}>+ Add New</a></li>
 				</ul>
 			</div>
 		</div>

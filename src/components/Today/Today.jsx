@@ -1,5 +1,7 @@
 import React from 'react'
 
+import styles from './styles.module.scss'
+
 const Today = () => {
 	const getDate = () => {
 		const now = new Date()
@@ -36,7 +38,7 @@ const Today = () => {
 		return `${currentDay}, ${currentMonth} ${now.getDate()}`
 	}
 
-	return <div className="date">{getDate()}</div>
+	return <div className={styles.today}>{getDate()}</div>
 }
 
 export default Today

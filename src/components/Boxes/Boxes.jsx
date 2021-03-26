@@ -1,12 +1,15 @@
 import React, { useContext, useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 
-import { fetchAll } from '../services/fetch'
+import { fetchAll } from '../../services/fetch'
 
-import { ModalContext } from '../context/modal'
+import { ModalContext } from '../../context/modal'
 
-import Box from './Box'
-import EditBookmarks from './EditBookmarks'
+import { Box } from '../../components'
+
+import { EditBookmark } from '../../modals'
+
+import styles from './styles.module.scss'
 
 const Boxes = ({ editMode }) => {
 	const modalContext = useContext(ModalContext)
@@ -29,19 +32,21 @@ const Boxes = ({ editMode }) => {
 
 	return (
 		<React.Fragment>
-			<div id="boxes">
+			<div className={styles.boxes}>
 				{
 					categories.map((category) => {
-						return <Box
-							category={category}
-							bookmarks={bookmarks.filter((bookmark => bookmark.category === category))}
-							editMode={editMode}
-							key={`${category}Box`} />
+						return (
+							<Box
+								category={category}
+								bookmarks={bookmarks.filter((bookmark => bookmark.category === category))}
+								editMode={editMode}
+								key={`${category}Box`} />
+						)
 					})
 				}
 			</div>
 
-			{ modalVisible && <EditBookmarks getBookmarks={getBookmarks} /> }
+			{ modalVisible && <EditBookmark getBookmarks={getBookmarks} /> }
 		</React.Fragment>
 	)
 }
