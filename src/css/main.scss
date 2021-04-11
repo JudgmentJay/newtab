@@ -10,17 +10,17 @@ body {
 	background-color: black;
 
 	&.golden {
-		background: url(../img/room-golden.jpg) black center top fixed no-repeat;
+		background: url(../img/room-golden.webp) black center top fixed no-repeat;
 		background-size: cover;
 	}
 
 	&.day {
-		background: url(../img/room-day.jpg) black center top fixed no-repeat;
+		background: url(../img/room-day.webp) black center top fixed no-repeat;
 		background-size: cover;
 	}
 
 	&.night {
-		background: url(../img/room-night.jpg) black center top fixed no-repeat;
+		background: url(../img/room-night.webp) black center top fixed no-repeat;
 		background-size: cover;
 	}
 }
@@ -57,9 +57,7 @@ h2 {
 
 		font-size: 3em;
 	}
-}
 
-@media (min-width: 3790px) {
 	h2 {
 		font-size: 2.2em;
 	}

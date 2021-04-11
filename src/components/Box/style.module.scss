@@ -1,4 +1,4 @@
-@import '../../css/variables.scss';
+@use '../../css/variables.scss' as *;
 
 .box {
 	width: calc((100vw / 8) - 10px);
