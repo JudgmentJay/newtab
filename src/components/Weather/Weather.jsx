@@ -10,36 +10,41 @@ const Weather = () => {
 	const [weather, setWeather] = useState(null)
 
 	useEffect(() => {
-		getWeather().then((weather) => {
-			const now = new Date()
+		getWeather()
+			.then((weather) => {
+				const body = document.getElementsByTagName('body')[0]
 
-			const twoHours = 60 * 60 * 2 * 1000
-			const halfHour = 60 * 30 * 1000
+				if (weather) {
+					const now = new Date()
 
-			const sunrise = weather.sunrise * 1000
-			const sunriseStart = sunrise - halfHour
-			const sunriseEnd = sunrise + twoHours
+					const twoHours = 60 * 60 * 2 * 1000
+					const halfHour = 60 * 30 * 1000
 
-			const sunset = weather.sunset * 1000
-			const sunsetStart = sunset - twoHours
-			const sunsetEnd = sunset + halfHour
+					const sunrise = weather.sunrise * 1000
+					const sunriseStart = sunrise - halfHour
+					const sunriseEnd = sunrise + twoHours
 
-			let bodyClass
+					const sunset = weather.sunset * 1000
+					const sunsetStart = sunset - twoHours
+					const sunsetEnd = sunset + halfHour
 
-			if ((now >= sunriseStart && now < sunriseEnd) || (now >= sunsetStart && now < sunsetEnd)) {
-				bodyClass = 'golden'
-			} else if (now >= sunriseEnd && now < sunsetStart) {
-				bodyClass = 'day'
-			} else {
-				bodyClass = 'night'
-			}
+					let bodyClass
 
-			const body = document.getElementsByTagName('body')[0]
+					if ((now >= sunriseStart && now < sunriseEnd) || (now >= sunsetStart && now < sunsetEnd)) {
+						bodyClass = 'golden'
+					} else if (now >= sunriseEnd && now < sunsetStart) {
+						bodyClass = 'day'
+					} else {
+						bodyClass = 'night'
+					}
 
-			body.classList.add(bodyClass)
+					body.classList.add(bodyClass)
 
-			setWeather(weather)
-		})
+					setWeather(weather)
+				} else {
+					body.classList.add('day')
+				}
+			})
 	}, [])
 
 	return weather

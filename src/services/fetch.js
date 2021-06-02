@@ -1,25 +1,25 @@
+const axios = require('axios')
+
 exports.fetchAll = (callback) => {
-	fetch(`/bookmarks/read/`)
-		.then((response) => response.json())
-		.then(bookmarks => callback(bookmarks))
-		.catch((error) => console.log(`Error fetching bookmarks: ${error}`))
+	axios.get(`/bookmarks/read/`)
+		.then(bookmarks => callback(bookmarks.data))
+		.catch((error) => console.error(error.response.data))
 }
 
 exports.fetchData = (path, method, data, callback) => {
-	fetch(path, {
+	const options = {
+		url: path,
 		method,
-		headers: {
-			'Content-Type': 'application/json'
-		},
-		body: JSON.stringify(data)
-	})
-		.then((response) => {
-			if (response.status === 400) {
-				alert('Invalid Password')
-			} else if (response.status === 404) {
-				console.log('Error updating bookmarks: Server not found')
-			} else if (response.ok) {
-				callback()
+		data
+	}
+
+	axios(options)
+		.then(() => callback())
+		.catch((error) => {
+			if (error.response.status === 401) {
+				alert('Invalid password')
+			} else {
+				console.error(error.response.data)
 			}
 		})
 }
