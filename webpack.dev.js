@@ -38,7 +38,7 @@ module.exports = merge(common, {
 	devServer: {
 		proxy: [{
 			context: ['/bookmarks', '/weather'],
-			target: 'http://localhost:3010',
+			target: 'http://localhost:3000'
 		}]
 	}
 })
