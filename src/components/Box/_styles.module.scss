@@ -1,0 +1,21 @@
+@use '../../scss/variables.scss' as *;
+
+.box {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	padding: 20px;
+
+	background-color: $darkGrey;
+	border-radius: 7px;
+
+	cursor: default;
+
+	&--marginRight {
+		margin-right: $gapSm;
+	}
+
+	&:hover {
+		background-color: $grey;
+	}
+}

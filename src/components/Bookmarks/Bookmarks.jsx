@@ -5,16 +5,17 @@ import { fetchAll } from '../../services/fetch'
 
 import { ModalContext } from '../../context/modal'
 
-import { Box } from '../../components'
+import {
+	BookmarkCategory,
+	Modal
+} from '../../components'
 
 import { EditBookmark } from '../../modals'
 
 import styles from './styles.module.scss'
 
-const Boxes = ({ editMode }) => {
-	const modalContext = useContext(ModalContext)
-
-	const modalVisible = modalContext.modalVisible
+const Bookmarks = ({ editMode }) => {
+	const { modalVisible } = useContext(ModalContext)
 
 	const [bookmarks, setBookmarks] = useState([])
 
@@ -28,15 +29,15 @@ const Boxes = ({ editMode }) => {
 		fetchAll(callback)
 	}
 
-	const categories = ['Anime', 'Games', 'Social', 'Japanese', 'Shopping', 'Work', 'Bills', 'Other']
+	const categories = ['Anime', 'Games', 'Social', 'Japanese', 'Shopping', 'Work', 'Finances', 'Other']
 
 	return (
 		<React.Fragment>
-			<div className={styles.boxes}>
+			<div className={styles.container}>
 				{
 					categories.map((category) => {
 						return (
-							<Box
+							<BookmarkCategory
 								category={category}
 								bookmarks={bookmarks.filter((bookmark => bookmark.category === category))}
 								editMode={editMode}
@@ -46,13 +47,17 @@ const Boxes = ({ editMode }) => {
 				}
 			</div>
 
-			{ modalVisible && <EditBookmark getBookmarks={getBookmarks} /> }
+			{ modalVisible &&
+				<Modal>
+					<EditBookmark getBookmarks={getBookmarks} />
+				</Modal>
+			}
 		</React.Fragment>
 	)
 }
 
-Boxes.propTypes = {
+Bookmarks.propTypes = {
 	editMode: PropTypes.bool.isRequired
 }
 
-export default Boxes
+export default Bookmarks

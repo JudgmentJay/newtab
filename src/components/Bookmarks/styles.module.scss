@@ -1,0 +1,19 @@
+@use '../../scss/variables.scss' as *;
+
+.container {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+	grid-gap: $gapSm;
+}
+
+@media screen and (min-width: 1900px) {
+	.container {
+		grid-gap: $gapMd;
+	}
+}
+
+@media screen and (min-width: 3500px) {
+	.container {
+		grid-gap: $gapLg;
+	}
+}

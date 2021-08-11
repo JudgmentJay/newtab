@@ -1,7 +1,6 @@
-@use '../../css/variables.scss' as *;
+@use '../../scss/variables.scss' as *;
 
-.box {
-	width: calc((100vw / 8) - 10px);
+.container {
 	height: 75vh;
 
 	&--editMode .links, &:hover .links {
@@ -17,9 +16,9 @@
 	position: relative;
 	z-index: 1;
 
-	background: rgba(255, 255, 255, 0.5);
-	backdrop-filter: blur(5px);
-	box-shadow: 0 0 35px rgba(0, 0, 0, 0.25);
+	background: $darkGrey;
+	border-radius: 7px;
+	box-shadow: $boxShadow;
 }
 
 .links {
@@ -37,19 +36,20 @@
 	padding: 7px 10px;
 
 	&:hover {
-		background: rgba(255, 255, 255, 0.25);
+		color: $highlight;
+		background: $grey;
 	}
 }
 
 .addNew {
 	display: none;
 
-	color: $red;
+	color: $highlight;
 
 	cursor: pointer;
 }
 
-@media (min-width: 1630px) {
+@media (min-width: 1900px) {
 	.links {
 		font-size: 1.6em;
 	}
@@ -59,23 +59,13 @@
 	}
 }
 
-@media (min-width: 1870px) {
-	.box {
-		width: calc((100vw / 8) - 20px);
-	}
-}
-
-@media (min-width: 2510px) {
+@media (min-width: 2500px) {
 	.links {
 		font-size: 2em;
 	}
 }
 
-@media (min-width: 3790px) {
-	.box {
-		width: calc((100vw / 8) - 30px);
-	}
-
+@media (min-width: 3500px) {
 	.links {
 		font-size: 3em;
 	}

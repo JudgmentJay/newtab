@@ -1,0 +1,22 @@
+@use '../../../scss/variables.scss' as *;
+
+.field {
+	margin-bottom: $gapSm;
+}
+
+.input {
+	width: 100%;
+	padding: $gapSm;
+
+	font-size: 1.8em;
+	color: $text;
+
+	background: $darkGrey;
+	border: 2px solid #{$lightGrey};
+	filter: none;
+	outline: 0;
+
+	&:focus {
+		background: $grey;
+	}
+}

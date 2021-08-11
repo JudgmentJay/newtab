@@ -4,12 +4,12 @@ import classNames from 'classnames'
 
 import styles from './styles.module.scss'
 
-const CornerBox = ({
+const EditToggle = ({
 	editMode,
 	setEditMode
 }) => {
-	const buttonClasses = classNames(styles.cornerBox, {
-		[`${styles['cornerBox--editMode']}`]: editMode
+	const buttonClasses = classNames(styles.button, {
+		[`${styles['button--editMode']}`]: editMode
 	})
 
 	return (
@@ -19,9 +19,9 @@ const CornerBox = ({
 	)
 }
 
-CornerBox.propTypes = {
+EditToggle.propTypes = {
 	editMode: PropTypes.bool.isRequired,
 	setEditMode: PropTypes.func.isRequired
 }
 
-export default CornerBox
+export default EditToggle

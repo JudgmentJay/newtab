@@ -1,0 +1,41 @@
+@use '../../scss/variables.scss' as *;
+
+.boxes {
+	position: absolute;
+	bottom: $gapSm;
+	right: $gapSm;
+
+	display: grid;
+	grid-gap: $gapSm;
+
+	font-size: 4em;
+	text-shadow: $textShadow;
+}
+
+.alignRight {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+@media (min-width: 1900px) {
+	.boxes {
+		bottom: $gapMd;
+		right: $gapMd;
+	}
+}
+
+@media (min-width: 2500px) {
+	.boxes {
+		font-size: 6em;
+	}
+}
+
+@media (min-width: 3500px) {
+	.boxes {
+		bottom: $gapLg;
+		right: $gapLg;
+
+		font-size: 8em;
+	}
+}

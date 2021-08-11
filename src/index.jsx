@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 
-import './css/main.scss'
+import './scss/global.scss'
 
 import { ModalProvider } from './context/modal'
 
 import {
-	Boxes,
-	CornerBox,
-	DateAndWeather
+	Bookmarks,
+	CornerBoxes,
+	EditToggle
 } from './components'
 
 const NewTab = () => {
@@ -16,9 +16,9 @@ const NewTab = () => {
 
 	return (
 		<ModalProvider>
-			<Boxes editMode={editMode} />
-			<DateAndWeather />
-			<CornerBox
+			<Bookmarks editMode={editMode} />
+			<CornerBoxes />
+			<EditToggle
 				editMode={editMode}
 				setEditMode={setEditMode} />
 		</ModalProvider>

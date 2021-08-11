@@ -27,7 +27,7 @@ const ModalProvider = ({ children }) => {
 const modalReducer = (state, action) => {
 	switch (action.type) {
 		case 'TOGGLE_ADD_MODAL':
-			return {...state, modalVisible: true, modalType: 'add', category: action.category}
+			return {modalVisible: true, modalType: 'add', category: action.category, bookmark: {}}
 		case 'TOGGLE_EDIT_MODAL':
 			return {modalVisible: true, modalType: 'edit', category: action.category, bookmark: action.bookmark}
 		case 'CLOSE_MODAL':
