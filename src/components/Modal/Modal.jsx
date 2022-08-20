@@ -1,37 +1,39 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 
-import { ModalContext } from '../../context/modal'
+import { Portal } from '../../components'
 
 import styles from './_styles.module.scss'
 
-const Modal = ({ children }) => {
-	const { dispatch: modalDispatch } = useContext(ModalContext)
-
+const Modal = ({
+	children,
+	handleCloseModal
+}) => {
 	useEffect(() => {
 		const closeModal = (e) => {
 			if (e.key === 'Escape') {
-				modalDispatch({ type: 'CLOSE_MODAL' })
+				handleCloseModal()
 			}
 		}
 
 		document.addEventListener('keydown', closeModal)
 
 		return () => document.removeEventListener('keydown', closeModal)
-	}, [modalDispatch])
+	}, [handleCloseModal])
 
 	return (
-		<React.Fragment>
+		<Portal wrapperId="react-portal">
 			<div className={styles.modal}>
 				{children}
 			</div>
-			<div className={styles.background} onClick={() => modalDispatch({ type: 'CLOSE_MODAL' })}></div>
-		</React.Fragment>
+			<div className={styles.background} onClick={() => handleCloseModal()}></div>
+		</Portal>
 	)
 }
 
 Modal.propTypes = {
-	children: PropTypes.node.isRequired
+	children: PropTypes.node.isRequired,
+	handleCloseModal: PropTypes.func.isRequired
 }
 
 export default Modal

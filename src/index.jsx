@@ -1,9 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, Fragment } from 'react'
 import { createRoot } from 'react-dom/client'
 
 import './scss/global.scss'
-
-import { ModalProvider } from './context/modal'
 
 import {
 	Bookmarks,
@@ -15,13 +13,14 @@ const NewTab = () => {
 	const [editMode, setEditMode] = useState(false)
 
 	return (
-		<ModalProvider>
+		<Fragment>
 			<Bookmarks editMode={editMode} />
 			<CornerBoxes />
 			<EditToggle
 				editMode={editMode}
 				setEditMode={setEditMode} />
-		</ModalProvider>
+			<div id="react-portal"></div>
+		</Fragment>
 	)
 }
 

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useState, Fragment } from 'react'
 import PropTypes from 'prop-types'
 
 import { fetchData } from '../services/fetch'
@@ -9,28 +9,19 @@ import {
 	FormField
 } from './_partials'
 
-import { ModalContext } from '../context/modal'
-
-const EditBookmark = ({ getBookmarks }) => {
-	const modalContext = useContext(ModalContext)
-
-	const {
-		modalType,
-		bookmark,
-		category,
-		dispatch: modalDispatch
-	} = modalContext
-
+const EditBookmark = ({
+	bookmark,
+	category,
+	getBookmarks,
+	handleCloseModal
+}) => {
 	const [password, setPassword] = useState('')
-	const [site, setSite] = useState(modalType === 'edit' ? bookmark.site : '')
-	const [url, setUrl] = useState(modalType === 'edit' ? bookmark.url : '')
+	const [site, setSite] = useState(bookmark ? bookmark.site : '')
+	const [url, setUrl] = useState(bookmark ? bookmark.url : '')
 
 	const callback = () => {
 		getBookmarks()
-
-		setTimeout(() => {
-			modalDispatch({ type: 'CLOSE_MODAL' })
-		}, 20)
+		handleCloseModal()
 	}
 
 	const addBookmark = () => {
@@ -65,8 +56,8 @@ const EditBookmark = ({ getBookmarks }) => {
 	}
 
 	return (
-		<React.Fragment>
-			<h2>{ modalType === 'add' ? 'Add' : 'Edit' } Bookmark</h2>
+		<Fragment>
+			<h2>{ bookmark ? 'Edit' : 'Add' } Bookmark</h2>
 			<FormField
 				type="password"
 				value={password}
@@ -85,9 +76,9 @@ const EditBookmark = ({ getBookmarks }) => {
 				onChange={(e) => setUrl(e.target.value)} />
 			<Buttons>
 				<Button
-					text={modalType === 'add' ? 'Add' : 'Update'}
-					onClick={modalType === 'add' ? () => addBookmark() : () => updateBookmark()} />
-				{ modalType === 'edit' &&
+					text={bookmark ? 'Update' : 'Add'}
+					onClick={bookmark ? () => updateBookmark() : () => addBookmark()} />
+				{ Boolean(bookmark) &&
 					<Button
 						text="Delete"
 						onClick={() => deleteBookmark()}
@@ -95,14 +86,17 @@ const EditBookmark = ({ getBookmarks }) => {
 				}
 				<Button
 					text="Cancel"
-					onClick={() => modalContext.dispatch({ type: 'CLOSE_MODAL' })} />
+					onClick={() => handleCloseModal()} />
 			</Buttons>
-		</React.Fragment>
+		</Fragment>
 	)
 }
 
 EditBookmark.propTypes = {
-	getBookmarks: PropTypes.func.isRequired
+	bookmark: PropTypes.object,
+	category: PropTypes.string.isRequired,
+	getBookmarks: PropTypes.func.isRequired,
+	handleCloseModal: PropTypes.func.isRequired
 }
 
 export default EditBookmark
