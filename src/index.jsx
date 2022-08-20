@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import ReactDOM from 'react-dom'
+import { createRoot } from 'react-dom/client'
 
 import './scss/global.scss'
 
@@ -25,4 +25,6 @@ const NewTab = () => {
 	)
 }
 
-ReactDOM.render(<NewTab />, document.getElementById('newtab'))
+const container = document.getElementById('newtab')
+const root = createRoot(container)
+root.render(<NewTab />)

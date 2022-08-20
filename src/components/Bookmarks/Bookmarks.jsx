@@ -33,19 +33,21 @@ const Bookmarks = ({ editMode }) => {
 
 	return (
 		<React.Fragment>
-			<div className={styles.container}>
-				{
-					categories.map((category) => {
-						return (
-							<BookmarkCategory
-								category={category}
-								bookmarks={bookmarks.filter((bookmark => bookmark.category === category))}
-								editMode={editMode}
-								key={`${category}Box`} />
-						)
-					})
-				}
-			</div>
+			{ Boolean(bookmarks.length > 0) &&
+				<div className={styles.container}>
+					{
+						categories.map((category) => {
+							return (
+								<BookmarkCategory
+									category={category}
+									bookmarks={bookmarks.filter((bookmark => bookmark.category === category))}
+									editMode={editMode}
+									key={`${category}Box`} />
+							)
+						})
+					}
+				</div>
+			}
 
 			{ modalVisible &&
 				<Modal>

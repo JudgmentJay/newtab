@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react'
 
-import { getWeather } from '../../services/darkSky'
-
 import {
 	Time,
 	TodaysDate,
@@ -11,17 +9,7 @@ import {
 import styles from './styles.module.scss'
 
 const CornerBoxes = () => {
-	const [weather, setWeather] = useState(null)
 	const [time, setTime] = useState(new Date())
-
-	useEffect(() => {
-		getWeather()
-			.then((weather) => {
-				if (weather) {
-					setWeather(weather)
-				}
-			})
-	}, [])
 
 	useEffect(() => {
 		const seconds = time.getSeconds()
@@ -37,7 +25,7 @@ const CornerBoxes = () => {
 		<div className={styles.boxes}>
 			<div className={styles.alignRight}>
 				<Time time={time} />
-				{ weather && <Weather weather={weather} /> }
+				<Weather />
 			</div>
 			<TodaysDate time={time} />
 		</div>
