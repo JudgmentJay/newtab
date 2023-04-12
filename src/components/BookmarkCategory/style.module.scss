@@ -15,9 +15,11 @@
 .content {
 	position: relative;
 	z-index: 1;
+	overflow: hidden;
 
-	background: $darkGrey;
+	background: rgba(35, 35, 35, 0.75);
 	border-radius: 7px;
+	backdrop-filter: blur(7px);
 	box-shadow: $boxShadow;
 }
 
@@ -37,7 +39,7 @@
 
 	&:hover {
 		color: $highlight;
-		background: $grey;
+		background: rgba(255, 255, 255, 0.1);
 	}
 }
 

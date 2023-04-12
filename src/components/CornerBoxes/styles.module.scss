@@ -3,7 +3,7 @@
 .boxes {
 	position: absolute;
 	bottom: $gapSm;
-	right: $gapSm;
+	left: $gapSm;
 
 	display: grid;
 	grid-gap: $gapSm;
@@ -21,7 +21,7 @@
 @media (min-width: 1900px) {
 	.boxes {
 		bottom: $gapMd;
-		right: $gapMd;
+		left: $gapMd;
 	}
 }
 
@@ -34,7 +34,7 @@
 @media (min-width: 3500px) {
 	.boxes {
 		bottom: $gapLg;
-		right: $gapLg;
+		left: $gapLg;
 
 		font-size: 8em;
 	}
