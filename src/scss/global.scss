@@ -3,8 +3,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Signika:wght@400;600&display=swap');
 @import './reset.scss';
 
+html {
+	height: 100%;
+}
+
 body {
-	overflow: hidden;
+	height: 100%;
 
 	font-family: 'Signika', sans-serif;
 	color: $text;
@@ -15,48 +19,24 @@ body {
 	padding: $gapSm;
 }
 
-h1 {
-	padding: 10px;
-
-	font-size: 1.6em;
-	font-weight: 600;
-	text-transform: uppercase;
-
-	cursor: default;
+#newtab {
+	height: 100%;
 }
 
-h2 {
-	margin: 0 0 $gapLg 0;
-
-	font-size: 2.4em;
-	font-weight: 600;
-	text-align: center;
+@media (max-width: 900px) {
+	body {
+		overflow: visible;
+	}
 }
 
 @media (min-width: 1900px) {
 	body {
 		padding: $gapMd;
 	}
-
-	h1 {
-		padding: 15px;
-
-		font-size: 2em;
-	}
 }
 
 @media (min-width: 3500px) {
 	body {
 		padding: $gapLg;
-	}
-
-	h1 {
-		padding: 20px;
-
-		font-size: 3em;
-	}
-
-	h2 {
-		font-size: 2.2em;
 	}
 }

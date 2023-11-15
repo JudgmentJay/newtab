@@ -1,13 +1,15 @@
 import React, { useState, Fragment } from 'react'
 import PropTypes from 'prop-types'
 
-import { fetchData } from '../services/fetch'
+import { fetchData } from '../../services/fetch'
 
 import {
 	Button,
 	Buttons,
 	FormField
-} from './_partials'
+} from '../_partials'
+
+import styles from './styles.module.scss'
 
 const EditBookmark = ({
 	bookmark,
@@ -57,7 +59,7 @@ const EditBookmark = ({
 
 	return (
 		<Fragment>
-			<h2>{ bookmark ? 'Edit' : 'Add' } Bookmark</h2>
+			<h2 className={styles.modalHeader}>{ bookmark ? 'Edit' : 'Add' } Bookmark</h2>
 			<FormField
 				type="password"
 				value={password}

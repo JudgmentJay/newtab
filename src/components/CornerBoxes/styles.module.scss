@@ -12,10 +12,16 @@
 	text-shadow: $textShadow;
 }
 
-.alignRight {
+.alignLeft {
 	display: flex;
-	justify-content: flex-end;
+	justify-content: flex-start;
 	align-items: center;
+}
+
+@media (max-width: 900px) {
+	.boxes {
+		display: none;
+	}
 }
 
 @media (min-width: 1900px) {

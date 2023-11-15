@@ -5,7 +5,7 @@ import classNames from 'classnames'
 import { Modal } from '../../components'
 import { EditBookmark } from '../../modals'
 
-import styles from './style.module.scss'
+import styles from './styles.module.scss'
 
 const BookmarkCategory = ({
 	category,
@@ -13,6 +13,7 @@ const BookmarkCategory = ({
 	getBookmarks,
 	editMode
 }) => {
+	const [isActive, setIsActive] = useState(false)
 	const [isModalOpen, setIsModalOpen] = useState(false)
 	const [bookmarkToEdit, setBookmarkToEdit] = useState(null)
 
@@ -31,6 +32,7 @@ const BookmarkCategory = ({
 	}
 
 	const boxClasses = classNames(styles.container, {
+		[`${styles['container--active']}`]: isActive,
 		[`${styles['container--editMode']}`]: editMode
 	})
 
@@ -38,18 +40,17 @@ const BookmarkCategory = ({
 		<Fragment>
 			<div className={boxClasses}>
 				<div className={styles.content}>
-					<h1>{category}</h1>
+					<h1 className={styles.boxHeader} onClick={() => setIsActive(!isActive)}>{category}</h1>
 					<ul className={styles.links}>
 						{
-							bookmarks.map((bookmark, i) => {
-								return (
-									<li key={`${category}Link${i}`}>
-										<a className={styles.link} href={bookmark.url} rel="noreferrer nofollow noopener" onClick={(e) => handleEditBookmark(e, bookmark)}>
-											{bookmark.site}
-										</a>
-									</li>
-								)
-							})
+							bookmarks.map((bookmark, i) => (
+								<li key={`${category}Link${i}`}>
+									<a className={styles.link} href={bookmark.url} rel="noreferrer nofollow noopener" onClick={(e) => handleEditBookmark(e, bookmark)}>
+										{bookmark.site}
+									</a>
+								</li>
+							)
+							)
 						}
 						<li><a className={`${styles.link} ${styles.addNew}`} onClick={() => setIsModalOpen(true)}>+ Add New</a></li>
 					</ul>

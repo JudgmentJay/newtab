@@ -4,10 +4,7 @@ exports.getWeather = async () => {
 	const now = new Date()
 
 	const forecast = await axios.get('/weather/forecast')
-		.then((forecast) => {
-			console.log(forecast.data)
-			return forecast.data
-		})
+		.then((forecast) => forecast.data)
 		.catch((error) => {
 			console.error(error.response.data)
 

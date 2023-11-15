@@ -1,0 +1,15 @@
+@use '../../scss/variables.scss' as *;
+
+.modalHeader {
+	margin: 0 0 $gapLg 0;
+
+	font-size: 2.4em;
+	font-weight: 600;
+	text-align: center;
+}
+
+@media (min-width: 3500px) {
+	.modalHeader {
+		font-size: 3em;
+	}
+}

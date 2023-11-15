@@ -4,15 +4,24 @@
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 	grid-gap: $gapSm;
+
+	height: 100%;
 }
 
-@media screen and (min-width: 1900px) {
+@media (max-width: 900px) {
+	.container {
+		display: flex;
+		flex-direction: column;
+	}
+}
+
+@media (min-width: 1900px) {
 	.container {
 		grid-gap: $gapMd;
 	}
 }
 
-@media screen and (min-width: 3500px) {
+@media (min-width: 3500px) {
 	.container {
 		grid-gap: $gapLg;
 	}

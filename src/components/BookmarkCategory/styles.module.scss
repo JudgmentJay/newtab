@@ -1,0 +1,141 @@
+@use '../../scss/variables.scss' as *;
+
+.container {
+	height: 75%;
+
+	&--editMode .links {
+		display: block;
+	}
+
+	&--editMode .addNew {
+		display: block;
+	}
+}
+
+.content {
+	position: relative;
+	z-index: 1;
+	overflow: hidden;
+
+	background: rgba(35, 35, 35, 0.75);
+	border-radius: 7px;
+	backdrop-filter: blur(7px);
+	box-shadow: $boxShadow;
+}
+
+.boxHeader {
+	padding: 10px;
+
+	font-size: 1.6em;
+	font-weight: 600;
+	text-transform: uppercase;
+
+	cursor: default;
+}
+
+.links {
+	display: none;
+	font-size: 1.4em;
+
+	list-style: none;
+}
+
+.link {
+	display: block;
+	padding: 7px 10px;
+
+	&:hover {
+		color: $highlight;
+		background: rgba(255, 255, 255, 0.1);
+	}
+}
+
+.addNew {
+	display: none;
+
+	color: $highlight;
+
+	cursor: pointer;
+}
+
+@media (max-width: 900px) {
+	.container {
+		&--active .links {
+			display: block;
+		}
+	}
+
+	.content {
+		height: 100%;
+
+		background: rgba(35, 35, 35, 0.90);
+		backdrop-filter: none;
+	}
+
+	.boxHeader {
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+
+		padding: $gapSm * 2;
+
+		font-size: 4em;
+		text-align: center;
+
+		cursor: 'pointer';
+	}
+
+	.links {
+		font-size: 3em;
+	}
+
+	.link {
+		padding: $gapSm $gapSm * 2;
+	}
+}
+
+@media (min-width: 901px) {
+	.container {
+		&:hover .links {
+			display: block;
+		}
+	}
+}
+
+@media (min-width: 1900px) {
+	.boxHeader {
+		padding: 15px;
+
+		font-size: 2em;
+	}
+
+	.links {
+		font-size: 1.6em;
+	}
+
+	.link {
+		padding: 10px 15px;
+	}
+}
+
+@media (min-width: 2500px) {
+	.links {
+		font-size: 2em;
+	}
+}
+
+@media (min-width: 3500px) {
+	.boxHeader {
+		padding: 20px;
+
+		font-size: 3em;
+	}
+
+	.links {
+		font-size: 3em;
+	}
+
+	.link {
+		padding: 15px 20px;
+	}
+}

@@ -23,7 +23,7 @@ const CornerBoxes = () => {
 
 	return (
 		<div className={styles.boxes}>
-			<div className={styles.alignRight}>
+			<div className={styles.alignLeft}>
 				<Time time={time} />
 				<Weather />
 			</div>
