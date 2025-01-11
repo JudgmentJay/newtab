@@ -1,8 +1,13 @@
 $text: #fff;
-$darkGrey: #23272f;
-$grey: #2b313b;
-$lightGrey: #343b47;
-$highlight: #fd5306;
+$darkGrey: rgb(35, 39, 47);
+@mixin darkGreyTransparent($opacity, $blur) {
+	background: rgba(35, 39, 47, $opacity);
+	backdrop-filter: blur($blur);
+}
+$darkGreyTransparent: rgba(35, 39, 47, 0.75);
+$grey: rgb(43, 49, 59);
+$lightGrey: rgb(52, 59, 71);
+$highlight: rgb(253, 83, 6);
 $boxShadow: 0 0 35px rgba(0, 0, 0, 0.5);
 $textShadow: 2px 2px 0 rgba(0, 0, 0, 1);
 

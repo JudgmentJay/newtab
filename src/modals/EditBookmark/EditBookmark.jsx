@@ -9,7 +9,7 @@ import {
 	FormField
 } from '../_partials'
 
-import styles from './styles.module.scss'
+import * as styles from './_styles.module.scss'
 
 const EditBookmark = ({
 	bookmark,

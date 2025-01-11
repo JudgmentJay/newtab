@@ -17,9 +17,8 @@
 	z-index: 1;
 	overflow: hidden;
 
-	background: rgba(35, 35, 35, 0.75);
+	@include darkGreyTransparent(0.75, 20px);
 	border-radius: 7px;
-	backdrop-filter: blur(7px);
 	box-shadow: $boxShadow;
 }
 

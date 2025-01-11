@@ -1,7 +1,7 @@
-@import './variables.scss';
+@use './variables.scss' as *;
+@use './reset.scss' as *;
 
 @import url('https://fonts.googleapis.com/css2?family=Signika:wght@400;600&display=swap');
-@import './reset.scss';
 
 html {
 	height: 100%;
@@ -13,7 +13,7 @@ body {
 	font-family: 'Signika', sans-serif;
 	color: $text;
 
-	background: url(../img/background.webp) #{$darkGrey} right bottom fixed no-repeat;
+	background: url(../img/background.webp) #{$darkGrey} center top fixed no-repeat;
 	background-size: cover;
 
 	padding: $gapSm;

@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react'
 import PropTypes from 'prop-types'
 
-import styles from './_styles.module.scss'
+import * as styles from './_styles.module.scss'
 
 const FormField = ({
 	type,

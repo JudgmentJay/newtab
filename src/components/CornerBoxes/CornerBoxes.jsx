@@ -6,7 +6,7 @@ import {
 	Weather
 } from '../../components'
 
-import styles from './styles.module.scss'
+import * as styles from './_styles.module.scss'
 
 const CornerBoxes = () => {
 	const [time, setTime] = useState(new Date())

@@ -5,7 +5,7 @@ import { fetchAll } from '../../services/fetch'
 
 import { BookmarkCategory } from '../../components'
 
-import styles from './styles.module.scss'
+import * as styles from './_styles.module.scss'
 
 const Bookmarks = ({ editMode }) => {
 	const [bookmarks, setBookmarks] = useState([])

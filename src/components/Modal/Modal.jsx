@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import { Portal } from '../../components'
 
-import styles from './_styles.module.scss'
+import * as styles from './_styles.module.scss'
 
 const Modal = ({
 	children,

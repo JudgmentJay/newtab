@@ -1,0 +1,54 @@
+@use '../../scss/variables.scss' as *;
+
+.urlBox {
+	display: none;
+	position: absolute;
+	left: calc(50% - 250px);
+	bottom: $gapSm;
+}
+
+.inputField {
+	width: 500px;
+	padding: 10px;
+
+	font-family: 'Signika', sans-serif;
+	font-size: 2em;
+	font-weight: 600;
+	color: $text;
+
+	@include darkGreyTransparent(0.75, 20px);
+	border: 2px solid $lightGrey;
+	border-radius: 7px;
+	outline: none;
+}
+
+@media (min-width: 901px) {
+	.urlBox {
+		display: block;
+	}
+}
+
+@media (min-width: 1900px) {
+	.urlBox {
+		bottom: $gapMd;
+		left: calc(50% - 350px);
+	}
+
+	.inputField {
+		width: 700px;
+
+		font-size: 3em;
+	}
+}
+
+@media (min-width: 2500px) {
+	.urlBox {
+		bottom: $gapMd;
+	}
+}
+
+@media (min-width: 3500px) {
+	.urlBox {
+		bottom: $gapLg;
+	}
+}

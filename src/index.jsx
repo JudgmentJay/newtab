@@ -6,7 +6,8 @@ import './scss/global.scss'
 import {
 	Bookmarks,
 	CornerBoxes,
-	EditToggle
+	EditToggle,
+	URLBox
 } from './components'
 
 const NewTab = () => {
@@ -16,6 +17,7 @@ const NewTab = () => {
 		<Fragment>
 			<Bookmarks editMode={editMode} />
 			<CornerBoxes />
+			<URLBox />
 			<EditToggle
 				editMode={editMode}
 				setEditMode={setEditMode} />

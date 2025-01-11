@@ -5,7 +5,7 @@ import classNames from 'classnames'
 import { Modal } from '../../components'
 import { EditBookmark } from '../../modals'
 
-import styles from './styles.module.scss'
+import * as styles from './_styles.module.scss'
 
 const BookmarkCategory = ({
 	category,

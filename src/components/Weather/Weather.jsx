@@ -6,7 +6,7 @@ import { Box } from '../../components'
 
 import weatherCodes from './weatherCodes.json'
 
-import styles from './styles.module.scss'
+import * as styles from './_styles.module.scss'
 
 require.context('../../img', true, /\.(jpe?g|png|gif|svg|webp)$/)
 
